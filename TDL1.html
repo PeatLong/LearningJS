@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+</head>
+<body>
+    <div class="todo-container">
+        <h1>To-Do List</h1>
+        <input type="text" id="taskInput" placeholder="Add a new task">
+        <button onclick="addTask()">Add Task</button>
+        <ul id="taskList"></ul>
+    </div>
+</body>
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.todo-container {
+    width: 400px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 200px;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: left;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+// script.js
+
+const taskInput = document.getElementById('taskInput');
+const taskList = document.getElementById('taskList');
+
+function addTask() {
+    const taskText = taskInput.value.trim();
+    if (taskText !== '') {
+        const li = document.createElement('li');
+        li.textContent = taskText;
+        taskList.appendChild(li);
+        taskInput.value = '';
+    }
+}
+
+function completeTask(event) {
+    const task = event.target;
+    task.classList.toggle('completed');
+}
+
+li.addEventListener('click', completeTask);
+
+function deleteTask(event) {
+    const task = event.target.parentElement;
+    taskList.removeChild(task);
+}
+
+const deleteBtn = document.createElement('button');
+deleteBtn.textContent = 'Delete';
+deleteBtn.addEvenetListener('click', deleteTask);
+li.appendChild(deleteBtn);
+</html>

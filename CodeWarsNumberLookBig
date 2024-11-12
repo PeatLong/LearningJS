@@ -1,0 +1,15 @@
+function narcissistic(value) {
+  // Convert the number to a string to get the individual digits
+  const strValue = value.toString();
+  const numDigits = strValue.length;
+
+  // Calculate the sum of digits raised to the power of the number of digits
+  let sum = 0;
+  for (let i = 0; i < numDigits; i++) {
+    const digit = parseInt(strValue[i], 10);
+    sum += Math.pow(digit, numDigits);
+  }
+
+  // Check if the sum is equal to the original number
+  return sum === value;
+}

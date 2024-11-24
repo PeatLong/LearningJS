@@ -1,0 +1,18 @@
+function duplicateCount(text) {
+  let count = 0;
+  const charCounts = {};
+
+  // Convert the text to lowercase and iterate over each character
+  text.toLowerCase().split('').forEach(char => {
+    charCounts[char] = (charCounts[char] || 0) + 1;
+  });
+
+  // Count the characters that appeared more than once
+  for (const char in charCounts) {
+    if (charCounts[char] > 1) {
+      count++;
+    }
+  }
+
+  return count;
+}
